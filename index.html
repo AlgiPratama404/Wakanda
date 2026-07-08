@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Website resmi WAKANDA - Wisata Alam Kapalo Banda dengan informasi destinasi, aktivitas, galeri, reservasi, dan kontak. (Single Page: semua halaman disatukan ke index.html)"
+    />
+    <title>WAKANDA | Wisata Alam Kapalo Banda</title>
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/script.js" defer></script>
+
+    <style>
+      /* router hash untuk index (konten ditampilkan via section[data-page]) */
+      [data-page] {
+        display: none;
+      }
+      [data-page].is-active {
+        display: block;
+      }
+      .print-hidden {
+        display: block;
+      }
+      @media print {
+        .print-hidden {
+          display: none !important;
+        }
+      }
+    </style>
+
+    <script>
+      // Hash router minimal untuk index (aktifkan section berdasarkan hash)
+      window.addEventListener("DOMContentLoaded", () => {
+        const hash = (window.location.hash || "").replace("#", "");
+        const page = hash || "beranda";
+        const el = document.querySelector(`[data-page="${page}"]`);
+        if (el) {
+          el.classList.add("is-active");
+        }
+      });
+      window.addEventListener("hashchange", () => {
+        document
+          .querySelectorAll("[data-page]")
+          .forEach((s) => s.classList.remove("is-active"));
+        const hash = (window.location.hash || "").replace("#", "");
+        const page = hash || "beranda";
+        const el = document.querySelector(`[data-page="${page}"]`);
+        if (el) el.classList.add("is-active");
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="site-loader" data-loader>
+      <div class="loader-mark">
+        <div class="loader-ring" aria-hidden="true"></div>
+        <div class="loader-text">WAKANDA</div>
+      </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="index.html#beranda" aria-label="Beranda WAKANDA">
+          <span class="brand-badge" aria-hidden="true"></span>
+          <span class="brand-text">
+            <span class="brand-title">WAKANDA</span>
+            <span class="brand-subtitle">Wisata Alam Kapalo Banda</span>
+          </span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Buka menu navigasi"
+          aria-expanded="false"
+          data-nav-toggle
+        >
+          <span class="nav-toggle-line"></span>
+        </button>
+
+        <nav aria-label="Navigasi utama">
+          <ul class="nav-menu" data-nav-menu>
+            <li>
+              <a class="nav-link" href="index.html#beranda" data-nav-link
+                >Beranda</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" href="index.html#informasi" data-nav-link
+                >Informasi</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" href="index.html#aktivitas" data-nav-link
+                >Aktivitas</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" href="index.html#galeri" data-nav-link
+                >Galeri</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" href="reservasi.html" data-nav-link
+                >Reservasi</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" href="index.html#faq" data-nav-link>FAQ</a>
+            </li>
+            <li>
+              <a class="nav-link" href="index.html#kontak" data-nav-link
+                >Kontak</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" href="index.html#ulasan" data-nav-link
+                >Ulasan</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN (konten hanya untuk halaman selain reservasi/pembayaran/bukti) -->
+    <main>
+      <!-- BERANDA -->
+      <section data-page="beranda" class="section site-shell reveal is-active">
+        <div
+          class="hero-card hero-home"
+          style="background-image: url(&quot;assets/images/1.jpg&quot;)"
+        >
+          <div class="hero-content">
+            <span class="eyebrow">Eco Tourism Sumatera Barat</span>
+            <h1 class="section-title">
+              WELCOME TO <br />
+              <span>WAKANDA</span>
+            </h1>
+            <p class="hero-description">
+              Temukan ketenangan abadi di Kapalo Banda, tempat aliran sungai
+              yang jernih, hamparan bukit hijau, dan suasana alam tropis menyatu
+              menjadi pengalaman wisata yang menyegarkan jiwa.
+            </p>
+            <div class="button-row">
+              <a class="btn btn-primary" href="index.html#aktivitas"
+                >Eksplor Sekarang</a
+              >
+              <a class="btn btn-outline" href="index.html#galeri"
+                >Lihat Galeri</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <section
+          class="section-space site-shell reveal"
+          style="margin-top: 72px"
+        >
+          <div class="split-copy">
+            <div>
+              <span class="eyebrow">Destinasi Pilihan</span>
+              <h2 class="section-title">Keindahan Alam yang Ikonik</h2>
+              <p class="section-subtitle">
+                Tiga sudut terbaik Kapalo Banda yang dirancang untuk memberi
+                kesan pertama yang kuat, tenang, dan tak terlupakan bagi setiap
+                pengunjung.
+              </p>
+            </div>
+            <a class="split-copy-link" href="index.html#informasi">
+              Lihat Semua Destinasi <span aria-hidden="true">→</span>
+            </a>
+          </div>
+
+          <div class="destination-layout">
+            <article class="destination-card destination-card--tall">
+              <img
+                src="assets/images/1.jpg"
+                alt="Panorama sungai Kapalo Banda"
+              />
+              <span class="destination-card__tag">Most Popular</span>
+              <div class="destination-card__content">
+                <h3>Sungai Kapalo Banda</h3>
+                <p>
+                  Lanskap utama dengan aliran air tenang, rakit bambu, dan
+                  panorama bukit yang menjadi ikon visual WAKANDA.
+                </p>
+              </div>
+            </article>
+
+            <div class="destination-stack">
+              <article class="destination-card">
+                <img
+                  src="assets/images/Air terjun sarasah.jpg"
+                  alt="Air Terjun Serasah"
+                />
+                <div class="destination-card__content">
+                  <h3>Air Terjun Serasah</h3>
+                  <p>
+                    Jalur petualangan yang menyatu dengan batu alam dan hutan
+                    lebat.
+                  </p>
+                </div>
+              </article>
+
+              <article class="destination-card">
+                <img
+                  src="assets/images/Hutan pinus.jpg"
+                  alt="Hutan Pinus Rimba"
+                />
+                <div class="destination-card__content">
+                  <h3>Hutan Pinus Rimba</h3>
+                  <p>
+                    Area santai dan trekking ringan dengan udara yang sejuk
+                    sepanjang hari.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="section-space site-shell reveal"
+          style="margin-top: 72px"
+        >
+          <div class="activity-panel panel">
+            <div style="text-align: center; margin-bottom: 28px">
+              <span class="eyebrow">Aktivitas Andalan</span>
+              <h2 class="section-title">Aktivitas Tak Terbatas.</h2>
+              <p class="section-subtitle" style="margin-inline: auto">
+                Dari petualangan memacu adrenalin hingga momen tenang di tengah
+                alam, WAKANDA menawarkan ritme wisata yang lengkap.
+              </p>
+            </div>
+
+            <div class="activity-grid">
+              <article class="activity-card">
+                <div class="icon-chip" aria-hidden="true">🛶</div>
+                <h3>Rakit Bambu</h3>
+                <p>
+                  Menyusuri sungai dengan rakit bambu tradisional sambil
+                  menikmati panorama bukit dan aliran air yang jernih.
+                </p>
+              </article>
+
+              <article class="activity-card">
+                <div class="icon-chip" aria-hidden="true">🥾</div>
+                <h3>Hiking Jalur Hijau</h3>
+                <p>
+                  Trek ringan hingga menengah melewati hutan pinus, sungai
+                  kecil, dan jalur alami yang memikat untuk dieksplor.
+                </p>
+              </article>
+
+              <article class="activity-card">
+                <div class="icon-chip" aria-hidden="true">🍽</div>
+                <h3>Kuliner Lokal</h3>
+                <p>
+                  Nikmati sajian khas Minang dalam suasana santai yang natural,
+                  cocok untuk melengkapi perjalanan keluarga.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="section-space site-shell reveal"
+          style="margin-top: 72px"
+        >
+          <div
+            class="cta-panel panel"
+            style="background-image: url(&quot;assets/images/Ban.jpg&quot;)"
+          >
+            <div class="cta-content">
+              <span
+                class="eyebrow"
+                style="background: rgba(255, 255, 255, 0.14); color: #fff"
+              >
+                Booking Experience
+              </span>
+              <h2 class="section-title">Siap Untuk Refreshing?</h2>
+              <p class="hero-description">
+                Jadwalkan kunjungan Anda sekarang dan biarkan alam memulihkan
+                energi. Kapalo Banda menghadirkan pengalaman yang cocok untuk
+                keluarga, komunitas, maupun perjalanan singkat akhir pekan.
+              </p>
+              <div class="button-row">
+                <a class="btn btn-outline-dark" href="reservasi.html"
+                  >Pesan Tiket Sekarang</a
+                >
+                <a class="btn btn-outline" href="index.html#kontak"
+                  >Hubungi Admin</a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="section-space site-shell reveal"
+          style="margin-top: 72px"
+        >
+          <div class="cta-strip">
+            <div class="cta-strip__copy">
+              <div class="icon-chip" aria-hidden="true">🎒</div>
+              <div>
+                <h3
+                  style="
+                    margin: 0 0 6px;
+                    font-family: &quot;Poppins&quot;, sans-serif;
+                  "
+                >
+                  Butuh Perlengkapan Khusus?
+                </h3>
+                <p style="margin: 0; color: var(--text-muted)">
+                  Tanyakan ke pengelola untuk ketersediaan alat trekking, sewa
+                  ban, dan panduan perjalanan privat.
+                </p>
+              </div>
+            </div>
+            <a class="btn btn-outline-dark" href="index.html#kontak"
+              >Hubungi Kami</a
+            >
+          </div>
+        </section>
+      </section>
+
+      <!-- Placeholder sections lain agar hash router tidak error (isi bisa kamu sambungkan dari file HTML terpisah bila perlu) -->
+      <section data-page="aktivitas" class="activity-page" hidden>
+        <main class="section site-shell reveal">
+          <h2 class="section-title">Aktivitas</h2>
+          <p class="section-subtitle">
+            Konten lengkap dapat dibuka dari halaman aktivitas.html.
+          </p>
+          <a class="btn btn-primary" href="aktivitas.html"
+            >Buka Halaman Aktivitas</a
+          >
+        </main>
+      </section>
+
+      <section data-page="galeri" class="activity-page" hidden>
+        <main class="section site-shell reveal">
+          <h2 class="section-title">Galeri</h2>
+          <p class="section-subtitle">
+            Konten lengkap dapat dibuka dari halaman galeri.html.
+          </p>
+          <a class="btn btn-primary" href="galeri.html">Buka Halaman Galeri</a>
+        </main>
+      </section>
+
+      <section data-page="informasi" class="info-page" hidden>
+        <main class="section site-shell reveal">
+          <h2 class="section-title">Informasi</h2>
+          <p class="section-subtitle">
+            Konten lengkap dapat dibuka dari halaman informasi.html.
+          </p>
+          <a class="btn btn-primary" href="informasi.html"
+            >Buka Halaman Informasi</a
+          >
+        </main>
+      </section>
+
+      <section data-page="faq" class="activity-page" hidden>
+        <main class="section site-shell reveal">
+          <h2 class="section-title">FAQ</h2>
+          <p class="section-subtitle">
+            Konten lengkap dapat dibuka dari halaman faq.html.
+          </p>
+          <a class="btn btn-primary" href="faq.html">Buka Halaman FAQ</a>
+        </main>
+      </section>
+
+      <section data-page="kontak" class="activity-page" hidden>
+        <main class="section site-shell reveal">
+          <h2 class="section-title">Kontak</h2>
+          <p class="section-subtitle">
+            Konten lengkap dapat dibuka dari halaman kontak.html.
+          </p>
+          <a class="btn btn-primary" href="kontak.html">Buka Halaman Kontak</a>
+        </main>
+      </section>
+
+      <section data-page="ulasan" class="activity-page" hidden>
+        <main class="section site-shell reveal">
+          <h2 class="section-title">Ulasan</h2>
+          <p class="section-subtitle">
+            Konten lengkap dapat dibuka dari halaman ulasan.html.
+          </p>
+          <a class="btn btn-primary" href="ulasan.html">Buka Halaman Ulasan</a>
+        </main>
+      </section>
+
+      <!-- reservasi/pembayaran/bukti tetap multi-page (sesuai flow yang sudah diperbaiki) -->
+      <section data-page="reservasi" hidden></section>
+      <section data-page="pembayaran" hidden></section>
+      <section data-page="bukti-pembayaran" hidden></section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <h2>Wakanda - Kapalo Banda</h2>
+        </div>
+
+        <nav class="footer-nav" aria-label="Tautan kaki halaman">
+          <div class="footer-links">
+            <a href="index.html#beranda">Beranda</a>
+            <a href="informasi.html">Informasi</a>
+            <a href="galeri.html">Galeri</a>
+            <a href="faq.html">FAQ</a>
+            <a href="kontak.html">Kontak</a>
+          </div>
+        </nav>
+
+        <div class="footer-meta">
+          <p class="footer-copyright">
+            &copy; 2026 Wakanda - Kapalo Banda. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

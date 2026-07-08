@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Reservasi tiket dan aktivitas wisata WAKANDA - Kapalo Banda secara online."
+    />
+    <title>Reservasi | WAKANDA Kapalo Banda</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/script.js" defer></script>
+  </head>
+  <body class="reservation-page">
+    <div class="site-loader" data-loader>
+      <div class="loader-mark">
+        <div class="loader-ring" aria-hidden="true"></div>
+        <div class="loader-text">WAKANDA</div>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="index.html" aria-label="Beranda WAKANDA">
+          <span class="brand-badge" aria-hidden="true"></span>
+          <span class="brand-text">
+            <span class="brand-title">WAKANDA</span>
+            <span class="brand-subtitle">Wisata Alam Kapalo Banda</span>
+          </span>
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Buka menu navigasi"
+          aria-expanded="false"
+          data-nav-toggle
+        >
+          <span class="nav-toggle-line"></span>
+        </button>
+        <nav aria-label="Navigasi utama">
+          <ul class="nav-menu" data-nav-menu>
+            <li>
+              <a class="nav-link" href="index.html" data-nav-link>Beranda</a>
+            </li>
+            <li>
+              <a class="nav-link" href="informasi.html" data-nav-link
+                >Informasi</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" href="aktivitas.html" data-nav-link
+                >Aktivitas</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" href="galeri.html" data-nav-link>Galeri</a>
+            </li>
+            <li>
+              <a class="nav-link" href="reservasi.html" data-nav-link
+                >Reservasi</a
+              >
+            </li>
+            <li><a class="nav-link" href="faq.html" data-nav-link>FAQ</a></li>
+            <li>
+              <a class="nav-link" href="kontak.html" data-nav-link>Kontak</a>
+            </li>
+            <li>
+              <a class="nav-link" href="ulasan.html" data-nav-link>Ulasan</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section site-shell reveal">
+        <div
+          class="hero-banner hero-card"
+          style="
+            min-height: 560px;
+            background-image: url(&quot;assets/images/482020669_1167391771717104_5774733384325093033_n.jpg&quot;);
+          "
+        >
+          <div class="hero-banner__content">
+            <span
+              class="eyebrow"
+              style="background: rgba(255, 255, 255, 0.14); color: #fff"
+            >
+              Booking Online
+            </span>
+            <h1 class="section-title">Reservasi Wisata</h1>
+            <p>
+              Mulai dari data kunjungan, lanjut ke pembayaran, lalu cetak bukti
+              reservasi untuk check-in di lokasi. Seluruh alur sudah disusun
+              seperti demo website wisata modern.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-space site-shell reveal">
+        <div class="reservation-steps" aria-label="Tahapan reservasi">
+          <div class="reservation-step is-current"></div>
+        </div>
+      </section>
+
+      <section class="site-shell reveal">
+        <div class="reservation-layout">
+          <div class="glass-card content-card reservation-side-card">
+            <span class="eyebrow">Kenapa Reservasi?</span>
+            <h2 class="section-title reservation-panel-title">
+              Atur Kunjungan Lebih Cepat
+            </h2>
+            <p class="section-subtitle">
+              Tim WAKANDA dapat menyiapkan slot aktivitas, area sambut,
+              perlengkapan, dan kapasitas pengunjung dengan lebih terstruktur.
+            </p>
+
+            <ul class="check-list">
+              <li>
+                <span>✓</span>
+                <span
+                  >Paket wisata, tanggal kunjungan, dan jumlah peserta dicatat
+                  dengan benar.</span
+                >
+              </li>
+              <li>
+                <span>✓</span>
+                <span
+                  >Pastikan pembayaran dicek agar tidak salah saat akan
+                  membayar.</span
+                >
+              </li>
+              <li>
+                <span>✓</span>
+                <span
+                  >Bukti reservasi dapat langsung dicetak sebagai bukti untuk
+                  check-in.</span
+                >
+              </li>
+              <li>
+                <span>✓</span>
+                <span
+                  >Jika sudah membayar dan tidak berkunjung, tiket atau pesanan
+                  akan dinyatakan hangus.</span
+                >
+              </li>
+            </ul>
+
+            <div class="booking-preview-card">
+              <h3>Preview Alur</h3>
+              <div class="summary-list">
+                <div class="summary-row">
+                  <span>Input Pengunjung</span>
+                  <strong>Form lengkap</strong>
+                </div>
+                <div class="summary-row">
+                  <span>Pembayaran</span>
+                  <strong>Transfer, QRIS, E-Wallet</strong>
+                </div>
+                <div class="summary-row">
+                  <span>Output Akhir</span>
+                  <strong>Bukti bayar siap cetak</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card content-card reservation-form-card">
+            <form class="form-grid" data-validate data-reservation-form>
+              <div>
+                <h2 class="section-title reservation-panel-title">
+                  Form Reservasi
+                </h2>
+                <p class="helper-text reservation-helper">
+                  Lengkapi data berikut agar sistem dapat membuat ringkasan
+                  pemesanan dan melanjutkan Anda ke halaman pembayaran.
+                </p>
+              </div>
+
+              <div class="form-grid two-col">
+                <div class="field">
+                  <label for="nama">Nama Lengkap</label>
+                  <input
+                    id="nama"
+                    name="nama"
+                    type="text"
+                    placeholder="Masukkan nama Anda"
+                    data-required
+                  />
+                  <span class="field-error" data-error-for="nama"></span>
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="nama@email.com"
+                    data-required
+                  />
+                  <span class="field-error" data-error-for="email"></span>
+                </div>
+              </div>
+
+              <div class="form-grid two-col">
+                <div class="field">
+                  <label for="telepon">Nomor HP</label>
+                  <input
+                    id="telepon"
+                    name="telepon"
+                    type="tel"
+                    placeholder="08xxxxxxxxxx"
+                    data-required
+                  />
+                  <span class="field-error" data-error-for="telepon"></span>
+                </div>
+                <div class="field">
+                  <label for="jumlah">Jumlah Pengunjung</label>
+                  <input
+                    id="jumlah"
+                    name="jumlah"
+                    type="number"
+                    min="1"
+                    placeholder="Contoh: 4"
+                    data-required
+                  />
+                  <span class="field-error" data-error-for="jumlah"></span>
+                </div>
+              </div>
+
+              <div class="form-grid two-col">
+                <div class="field">
+                  <label for="tanggal">Tanggal Kunjungan</label>
+                  <input
+                    id="tanggal"
+                    name="tanggal"
+                    type="date"
+                    data-required
+                  />
+                  <span class="field-error" data-error-for="tanggal"></span>
+                </div>
+                <div class="field">
+                  <label for="sesi">Sesi Kunjungan</label>
+                  <select id="sesi" name="sesi" data-required>
+                    <option value="">Pilih sesi kunjungan</option>
+                    <option value="Sesi Pagi · 08.00 - 10.00">
+                      Sesi Pagi · 08.00 - 10.00
+                    </option>
+                    <option value="Sesi Siang · 13.00 - 15.00">
+                      Sesi Siang · 13.00 - 15.00
+                    </option>
+                    <option value="Sesi Sore · 15.30 - 17.00">
+                      Sesi Sore · 15.30 - 17.00
+                    </option>
+                  </select>
+                  <span class="field-error" data-error-for="sesi"></span>
+                </div>
+              </div>
+
+              <div class="form-grid two-col">
+                <div class="field">
+                  <label for="paket">Paket Wisata</label>
+                  <select id="paket" name="paket" data-required>
+                    <option value="">Pilih paket wisata</option>
+                    <option value="Rakit Bambu">Rakit Bambu</option>
+                    <option value="Trekking">Trekking</option>
+                    <option value="Offroad Adventure">Offroad Adventure</option>
+                    <option value="Camping Ground">Camping Ground</option>
+                    <option value="Ticket">Ticket</option>
+                    <option value="Ticket">Baju Adat</option>
+                  </select>
+                  <span class="field-error" data-error-for="paket"></span>
+                </div>
+                <div class="field">
+                  <label for="asalKota">Asal Kota</label>
+                  <input
+                    id="asalKota"
+                    name="asalKota"
+                    type="text"
+                    placeholder="Contoh: Payakumbuh"
+                    data-required
+                  />
+                  <span class="field-error" data-error-for="asalKota"></span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="catatan">Catatan Tambahan</label>
+                <textarea
+                  id="catatan"
+                  name="catatan"
+                  placeholder="Tambahkan kebutuhan alat, permintaan guide, preferensi area, atau info khusus lainnya..."
+                ></textarea>
+                <span class="field-error" data-error-for="catatan"></span>
+              </div>
+
+              <div class="checkbox-row checkbox-row--stack">
+                <input
+                  id="setuju"
+                  name="setuju"
+                  type="checkbox"
+                  data-required
+                />
+                <label for="setuju">
+                  Saya menyetujui syarat reservasi, kebijakan kunjungan, dan
+                  melanjutkan ke tahap pembayaran.
+                </label>
+              </div>
+              <span class="field-error" data-error-for="setuju"></span>
+
+              <div class="button-row">
+                <button class="btn btn-primary" type="submit">
+                  Lanjut ke Pembayaran
+                </button>
+              </div>
+              <p class="status-message" data-form-status></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <h2>Wakanda - Kapalo Banda</h2>
+          
+        </div>
+
+        <nav class="footer-nav" aria-label="Tautan kaki halaman">
+          <div class="footer-links">
+            <a href="index.html">Beranda</a>
+            <a href="informasi.html">Informasi</a>
+            <a href="galeri.html">Galeri</a>
+            <a href="faq.html">FAQ</a>
+            <a href="kontak.html">Kontak</a>
+          </div>
+        </nav>
+
+        <div class="footer-meta">
+          <p class="footer-copyright">
+            &copy; 2026 Wakanda - Kapalo Banda. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

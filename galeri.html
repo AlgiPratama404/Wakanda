@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Galeri visual WAKANDA - Wisata Alam Kapalo Banda dengan foto aktivitas, suasana, dan momen terbaik."
+    />
+    <title>Galeri | WAKANDA Kapalo Banda</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/script.js" defer></script>
+  </head>
+  <body class="gallery-page">
+    <div class="site-loader" data-loader>
+      <div class="loader-mark">
+        <div class="loader-ring" aria-hidden="true"></div>
+        <div class="loader-text">WAKANDA</div>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="index.html" aria-label="Beranda WAKANDA">
+          <span class="brand-badge" aria-hidden="true"></span>
+          <span class="brand-text">
+            <span class="brand-title">WAKANDA</span>
+            <span class="brand-subtitle">Wisata Alam Kapalo Banda</span>
+          </span>
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Buka menu navigasi"
+          aria-expanded="false"
+          data-nav-toggle
+        >
+          <span class="nav-toggle-line"></span>
+        </button>
+        <nav aria-label="Navigasi utama">
+          <ul class="nav-menu" data-nav-menu>
+            <li>
+              <a class="nav-link" href="index.html" data-nav-link>Beranda</a>
+            </li>
+            <li>
+              <a class="nav-link" href="informasi.html" data-nav-link
+                >Informasi</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" href="aktivitas.html" data-nav-link
+                >Aktivitas</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" href="galeri.html" data-nav-link>Galeri</a>
+            </li>
+            <li>
+              <a class="nav-link" href="reservasi.html" data-nav-link
+                >Reservasi</a
+              >
+            </li>
+            <li><a class="nav-link" href="faq.html" data-nav-link>FAQ</a></li>
+            <li>
+              <a class="nav-link" href="kontak.html" data-nav-link>Kontak</a>
+            </li>
+            <li>
+              <a class="nav-link" href="ulasan.html" data-nav-link>Ulasan</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section-space site-shell reveal">
+        <div class="gallery-intro">
+          <div class="gallery-copy-block">
+            <span class="eyebrow">Galeri Visual</span>
+            <h1 class="section-title">
+              Dokumentasi Yang Menunjukkan Atmosfer Kapalo Banda
+            </h1>
+            <p class="section-subtitle">
+              Berbeda dari halaman aktivitas, halaman galeri dibuat untuk
+              kebutuhan eksplorasi visual: melihat suasana, membaca cerita
+              tempat, dan membangun impresi emosional sebelum berkunjung.
+            </p>
+          </div>
+
+          <div class="gallery-collage">
+            <article class="gallery-card gallery-card--portrait">
+              <img
+                src="assets/images/Air terjun sarasah.jpg"
+                alt="Air terjun Serasah di Kapalo Banda"
+              />
+              <div class="gallery-card__caption">
+                <strong>Air terjun Serasah</strong>
+              </div>
+            </article>
+
+            <article
+              class="gallery-card gallery-card--portrait gallery-card--soft"
+            >
+              <img
+                src="assets/images/Galeri/Galeri For All/Galeri 5.jpg"
+                alt="Photo story pengunjung WAKANDA"
+              />
+              <div class="gallery-card__caption">
+                <strong>Photo Story</strong>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-space site-shell reveal">
+        <div class="gallery-archive-head">
+          <div class="gallery-archive-copy">
+            <span class="eyebrow">Galeri Archive</span>
+            <h2 class="section-title">Jelajahi Momen Manis dan Harmoni</h2>
+            <p class="section-subtitle">
+              Jelahi hingga kesudut sudut objek wisata WAKANDA, dengan take foto
+              yang menarik.
+            </p>
+          </div>
+
+          <div class="filter-row gallery-filter-row">
+            <button
+              class="chip is-active"
+              type="button"
+              data-filter-button="all"
+            >
+              Semua
+            </button>
+            <button class="chip" type="button" data-filter-button="aktivitas">
+              Aktivitas
+            </button>
+            <button class="chip" type="button" data-filter-button="suasana">
+              Suasana
+            </button>
+            <button class="chip" type="button" data-filter-button="detail">
+              Detail
+            </button>
+          </div>
+        </div>
+
+        <div class="masonry-grid">
+          <div class="masonry-item" data-gallery-category="suasana detail">
+            <button class="masonry-button" type="button" data-gallery-trigger>
+              <img
+                src="assets/images/Galeri/Galeri For All/Galeri 7.jpg"
+                alt="Kegiatan komunitas di area lapang"
+              />
+            </button>
+          </div>
+          <div class="masonry-item" data-gallery-category="aktivitas detail">
+            <button class="masonry-button" type="button" data-gallery-trigger>
+              <img
+                src="assets/images/Galeri/Galeri For All/Galeri 2.jpg"
+                alt="Pengunjung berfoto di kendaraan offroad"
+              />
+            </button>
+          </div>
+          <div class="masonry-item" data-gallery-category="aktivitas">
+            <button class="masonry-button" type="button" data-gallery-trigger>
+              <img
+                src="assets/images/Galeri/Galeri For Offroad/Galeri 15.jpg"
+                alt="Rombongan offroad adventure"
+              />
+            </button>
+          </div>
+          <div class="masonry-item" data-gallery-category="detail suasana">
+            <button class="masonry-button" type="button" data-gallery-trigger>
+              <img
+                src="assets/images/Galeri/Galeri For Aktivitas & Fasilitas/Galeri 13.jpg"
+                alt="Kelompok pengunjung di area akar pohon besar"
+              />
+            </button>
+          </div>
+          <div class="masonry-item" data-gallery-category="detail">
+            <button class="masonry-button" type="button" data-gallery-trigger>
+              <img
+                src="assets/images/Galeri/Galeri For Aktivitas & Fasilitas/Galeri 17.jpg"
+                alt="Foto detail pengunjung dengan kendaraan"
+              />
+            </button>
+          </div>
+          <div class="masonry-item" data-gallery-category="suasana">
+            <button class="masonry-button" type="button" data-gallery-trigger>
+              <img
+                src="assets/images/Galeri/Galeri For All/Galeri 5.jpg"
+                alt="Dua pengunjung membawa ban sungai di area wisata"
+              />
+            </button>
+          </div>
+          <div class="masonry-item" data-gallery-category="suasana aktivitas">
+            <button class="masonry-button" type="button" data-gallery-trigger>
+              <img
+                src="assets/images/Galeri/Galeri For All/Galeri 6.jpg"
+                alt="Pemandangan kabut pegunungan dan kendaraan wisata"
+              />
+            </button>
+          </div>
+          <div class="masonry-item" data-gallery-category="detail suasana">
+            <button class="masonry-button" type="button" data-gallery-trigger>
+              <img
+                src="assets/images/Galeri/Galeri For Aktivitas & Fasilitas/111.jpg"
+                alt="Pengunjung di jalur bambu dan pepohonan"
+              />
+            </button>
+          </div>
+          <div class="masonry-item" data-gallery-category="suasana">
+            <button class="masonry-button" type="button" data-gallery-trigger>
+              <img
+                src="assets/images/Galeri/Galeri For All/Galeri 8.jpg"
+                alt="Pemandangan camping di tepi sungai"
+              />
+            </button>
+          </div>
+          <div class="masonry-item" data-gallery-category="aktivitas suasana">
+            <button class="masonry-button" type="button" data-gallery-trigger>
+              <img
+                src="assets/images/Galeri/Galeri For All/Galeri 4.jpg"
+                alt="Aktivitas air bersama kelompok"
+              />
+            </button>
+          </div>
+          <div class="masonry-item" data-gallery-category="aktivitas">
+            <button class="masonry-button" type="button" data-gallery-trigger>
+              <img
+                src="assets/images/Galeri/Galeri For Offroad/481254955_1160229195766695_992786356087452941_n.jpg"
+                alt="Jeep di sungai Kapalo Banda"
+              />
+            </button>
+          </div>
+          <div class="masonry-item" data-gallery-category="detail aktivitas">
+            <button class="masonry-button" type="button" data-gallery-trigger>
+              <img
+                src="assets/images/482020669_1167391771717104_5774733384325093033_n.jpg"
+                alt="Rakit bambu dan ban sungai di area wisata"
+              />
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="gallery-modal" data-gallery-modal aria-hidden="true">
+      <div class="gallery-modal__content">
+        <button
+          class="gallery-modal__close"
+          type="button"
+          aria-label="Tutup gambar"
+          data-gallery-modal-close
+        >
+          x
+        </button>
+        <img src="" alt="" data-gallery-modal-image />
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <h2>Wakanda - Kapalo Banda</h2>
+        </div>
+
+        <nav class="footer-nav" aria-label="Tautan kaki halaman">
+          <div class="footer-links">
+            <a href="index.html">Beranda</a>
+            <a href="informasi.html">Informasi</a>
+            <a href="galeri.html">Galeri</a>
+            <a href="faq.html">FAQ</a>
+            <a href="kontak.html">Kontak</a>
+          </div>
+        </nav>
+
+        <div class="footer-meta">
+          <p class="footer-copyright">
+            &copy; 2026 Wakanda - Kapalo Banda. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

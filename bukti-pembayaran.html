@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Bukti pembayaran dan reservasi final WAKANDA - Kapalo Banda."
+    />
+    <title>Bukti Pembayaran | WAKANDA Kapalo Banda</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/script.js" defer></script>
+  </head>
+  <body class="receipt-page">
+    <div class="site-loader" data-loader>
+      <div class="loader-mark">
+        <div class="loader-ring" aria-hidden="true"></div>
+        <div class="loader-text">WAKANDA</div>
+      </div>
+    </div>
+
+    <header class="site-header print-hidden">
+      <div class="nav-shell">
+        <a class="brand" href="index.html" aria-label="Beranda WAKANDA">
+          <span class="brand-badge" aria-hidden="true"></span>
+          <span class="brand-text">
+            <span class="brand-title">WAKANDA</span>
+            <span class="brand-subtitle">Wisata Alam Kapalo Banda</span>
+          </span>
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Buka menu navigasi"
+          aria-expanded="false"
+          data-nav-toggle
+        >
+          <span class="nav-toggle-line"></span>
+        </button>
+        <nav aria-label="Navigasi utama">
+          <ul class="nav-menu" data-nav-menu>
+            <li>
+              <a class="nav-link" href="index.html" data-nav-link>Beranda</a>
+            </li>
+            <li>
+              <a class="nav-link" href="informasi.html" data-nav-link
+                >Informasi</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" href="aktivitas.html" data-nav-link
+                >Aktivitas</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" href="galeri.html" data-nav-link>Galeri</a>
+            </li>
+            <li>
+              <a class="nav-link" href="reservasi.html" data-nav-link
+                >Reservasi</a
+              >
+            </li>
+            <li><a class="nav-link" href="faq.html" data-nav-link>FAQ</a></li>
+            <li>
+              <a class="nav-link" href="kontak.html" data-nav-link>Kontak</a>
+            </li>
+            <li>
+              <a class="nav-link" href="ulasan.html" data-nav-link>Ulasan</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main data-receipt-page>
+      <section class="section-space site-shell reveal print-hidden">
+        <div class="reservation-steps" aria-label="Tahapan reservasi">
+          <div class="reservation-step is-complete">
+            <span>1</span>
+            <div>
+              <strong>Data Reservasi</strong>
+              <small>Selesai</small>
+            </div>
+          </div>
+          <div class="reservation-step is-complete">
+            <span>2</span>
+            <div>
+              <strong>Pembayaran</strong>
+              <small>Lunas</small>
+            </div>
+          </div>
+          <div class="reservation-step is-current">
+            <span>3</span>
+            <div>
+              <strong>Bukti Final</strong>
+              <small>Siap dicetak</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="site-shell reveal" data-receipt-content>
+        <div class="receipt-shell">
+          <div class="content-card receipt-card print-surface">
+            <div class="receipt-header">
+              <div>
+                <span class="eyebrow">Bukti Pembayaran</span>
+                <h1 class="section-title reservation-panel-title">
+                  Reservasi Berhasil Dikonfirmasi
+                </h1>
+                <p class="section-subtitle receipt-subtitle">
+                  Tunjukkan bukti ini saat check-in untuk mempercepat verifikasi
+                  di area WAKANDA - Kapalo Banda.
+                </p>
+              </div>
+              <div class="receipt-status-block">
+                <span class="status-badge-paid">Lunas</span>
+                <strong data-receipt-booking-code>WKD-0000</strong>
+                <small data-receipt-paid-at>-</small>
+              </div>
+            </div>
+
+            <div class="receipt-grid">
+              <div class="receipt-section">
+                <h3>Detail Pemesan</h3>
+                <div class="summary-list summary-list--compact">
+                  <div class="summary-row">
+                    <span>Nama</span>
+                    <strong data-receipt-name>-</strong>
+                  </div>
+                  <div class="summary-row">
+                    <span>Email</span>
+                    <strong data-receipt-email>-</strong>
+                  </div>
+                  <div class="summary-row">
+                    <span>Telepon</span>
+                    <strong data-receipt-phone>-</strong>
+                  </div>
+                  <div class="summary-row">
+                    <span>Asal Kota</span>
+                    <strong data-receipt-city>-</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="receipt-section">
+                <h3>Detail Kunjungan</h3>
+                <div class="summary-list summary-list--compact">
+                  <div class="summary-row">
+                    <span>Paket</span>
+                    <strong data-receipt-package>-</strong>
+                  </div>
+                  <div class="summary-row">
+                    <span>Tanggal</span>
+                    <strong data-receipt-date>-</strong>
+                  </div>
+                  <div class="summary-row">
+                    <span>Sesi</span>
+                    <strong data-receipt-session>-</strong>
+                  </div>
+                  <div class="summary-row">
+                    <span>Jumlah</span>
+                    <strong data-receipt-visitors>-</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="receipt-section">
+                <h3>Informasi Pembayaran</h3>
+                <div class="summary-list summary-list--compact">
+                  <div class="summary-row">
+                    <strong data-receipt-payment-code>-</strong>
+                  </div>
+                  <div class="summary-row">
+                    <span>Metode</span>
+                    <strong data-receipt-method>-</strong>
+                  </div>
+                  <div class="summary-row">
+                    <span>Pengirim</span>
+                    <strong data-receipt-source>-</strong>
+                  </div>
+                  <div class="summary-row">
+                    <span>Referensi</span>
+                    <strong data-receipt-reference>-</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="receipt-section">
+                <h3>Rincian Tagihan</h3>
+                <div class="summary-list summary-list--compact">
+                  <div class="summary-row">
+                    <span data-receipt-subtotal-label>Subtotal Paket</span>
+                    <strong data-receipt-subtotal>-</strong>
+                  </div>
+                  <div class="summary-row">
+                    <span>Biaya Layanan</span>
+                    <strong data-receipt-service>-</strong>
+                  </div>
+                  <div class="summary-row">
+                    <span>Konservasi Area</span>
+                    <strong data-receipt-conservation>-</strong>
+                  </div>
+                  <div class="summary-row">
+                    <span>Biaya Metode Bayar</span>
+                    <strong data-receipt-admin>-</strong>
+                  </div>
+                  <div class="summary-total">
+                    <span>Total Dibayar</span>
+                    <strong data-receipt-total>-</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="receipt-note-block">
+              <div>
+                <strong>Catatan Tambahan</strong>
+                <p data-receipt-note>Tidak ada catatan tambahan.</p>
+              </div>
+              <div class="receipt-stamp">PAID</div>
+            </div>
+
+            <div class="receipt-actions print-hidden">
+              <button class="btn btn-primary" type="button" data-print-receipt>
+                Cetak Bukti
+              </button>
+              <a class="btn btn-outline-dark" href="index.html"
+                >Kembali ke Beranda</a
+              >
+              <a
+                class="btn btn-outline-dark"
+                href="reservasi.html"
+                data-reset-reservation
+                >Reservasi Baru</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="site-shell reveal" data-receipt-empty hidden>
+        <div class="content-card empty-state-card">
+          <span class="eyebrow">Bukti Belum Tersedia</span>
+          <h2 class="section-title reservation-panel-title">
+            Selesaikan Pembayaran Terlebih Dahulu
+          </h2>
+          <p class="section-subtitle">
+            Bukti pembayaran hanya akan diterbitkan setelah data reservasi dan
+            pembayaran demo tersimpan dengan lengkap.
+          </p>
+          <div class="button-row">
+            <a class="btn btn-primary" href="reservasi.html">Mulai Reservasi</a>
+            <a class="btn btn-outline-dark" href="pembayaran.html"
+              >Ke Pembayaran</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer print-hidden">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <h2>Wakanda - Kapalo Banda</h2>
+          
+        </div>
+
+        <nav class="footer-nav" aria-label="Tautan kaki halaman">
+          <div class="footer-links">
+            <a href="index.html">Beranda</a>
+            <a href="informasi.html">Informasi</a>
+            <a href="galeri.html">Galeri</a>
+            <a href="faq.html">FAQ</a>
+            <a href="kontak.html">Kontak</a>
+          </div>
+        </nav>
+
+        <div class="footer-meta">
+          <p class="footer-copyright">
+            &copy; 2026 Wakanda - Kapalo Banda. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

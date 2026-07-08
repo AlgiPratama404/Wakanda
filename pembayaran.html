@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Halaman pembayaran reservasi wisata WAKANDA - Kapalo Banda."
+    />
+    <title>Pembayaran | WAKANDA Kapalo Banda</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/script.js" defer></script>
+  </head>
+  <body class="payment-page">
+    <div class="site-loader" data-loader>
+      <div class="loader-mark">
+        <div class="loader-ring" aria-hidden="true"></div>
+        <div class="loader-text">WAKANDA</div>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="index.html" aria-label="Beranda WAKANDA">
+          <span class="brand-badge" aria-hidden="true"></span>
+          <span class="brand-text">
+            <span class="brand-title">WAKANDA</span>
+            <span class="brand-subtitle">Wisata Alam Kapalo Banda</span>
+          </span>
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Buka menu navigasi"
+          aria-expanded="false"
+          data-nav-toggle
+        >
+          <span class="nav-toggle-line"></span>
+        </button>
+        <nav aria-label="Navigasi utama">
+          <ul class="nav-menu" data-nav-menu>
+            <li>
+              <a class="nav-link" href="index.html" data-nav-link>Beranda</a>
+            </li>
+            <li>
+              <a class="nav-link" href="informasi.html" data-nav-link
+                >Informasi</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" href="aktivitas.html" data-nav-link
+                >Aktivitas</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" href="galeri.html" data-nav-link>Galeri</a>
+            </li>
+            <li>
+              <a class="nav-link" href="reservasi.html" data-nav-link
+                >Reservasi</a
+              >
+            </li>
+            <li><a class="nav-link" href="faq.html" data-nav-link>FAQ</a></li>
+            <li>
+              <a class="nav-link" href="kontak.html" data-nav-link>Kontak</a>
+            </li>
+            <li>
+              <a class="nav-link" href="ulasan.html" data-nav-link>Ulasan</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main data-payment-page>
+      <section class="section site-shell reveal">
+        <div
+          class="hero-banner hero-card"
+          style="
+            min-height: 420px;
+            background-image: url(&quot;assets/images/Galeri/Galeri For Offroad/Galeri 15.jpg&quot;);
+          "
+        >
+          <div class="hero-banner__content">
+            <span
+              class="eyebrow"
+              style="background: rgba(255, 255, 255, 0.14); color: #fff"
+            >
+              Tahap 2
+            </span>
+            <h1 class="section-title">Pembayaran Reservasi</h1>
+            <p>
+              Tinjau kembali detail kunjungan Anda, pilih metode pembayaran,
+              lalu selesaikan transaksi untuk mendapatkan bukti reservasi final.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-space site-shell reveal">
+        <div class="reservation-steps" aria-label="Tahapan reservasi">
+          <div class="reservation-step is-complete">
+            <span>1</span>
+            <div>
+              <strong>Data Reservasi</strong>
+              <small>Sudah tersimpan</small>
+            </div>
+          </div>
+          <div class="reservation-step is-current">
+            <span>2</span>
+            <div>
+              <strong>Pembayaran</strong>
+              <small>Konfirmasi transaksi</small>
+            </div>
+          </div>
+          <div class="reservation-step">
+            <span>3</span>
+            <div>
+              <strong>Bukti Final</strong>
+              <small>Siap dicetak</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="site-shell reveal" data-payment-content>
+        <div class="payment-layout">
+          <div class="content-card payment-card">
+            <div class="payment-heading">
+              <span class="eyebrow">Metode Pembayaran</span>
+              <h2 class="section-title reservation-panel-title">
+                Selesaikan Pembayaran
+              </h2>
+              <p class="helper-text reservation-helper">
+                Pilih channel pembayaran yang paling nyaman, lalu isi detail
+                pembayar agar sistem demo bisa menerbitkan bukti reservasi.
+              </p>
+            </div>
+
+            <form class="form-grid" data-validate data-payment-form>
+              <div class="payment-method-grid">
+                <label class="payment-method">
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="bca"
+                    data-required
+                    checked
+                  />
+                  <span class="payment-method__body">
+                    <strong>Transfer BCA</strong>
+                    <small>Verifikasi otomatis 5 menit</small>
+                  </span>
+                </label>
+                <label class="payment-method">
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="mandiri"
+                    data-required
+                  />
+                  <span class="payment-method__body">
+                    <strong>Virtual Account Mandiri</strong>
+                    <small>Cocok untuk pembayaran cepat</small>
+                  </span>
+                </label>
+                <label class="payment-method">
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="ewallet"
+                    data-required
+                  />
+                  <span class="payment-method__body">
+                    <strong>DANA / GoPay</strong>
+                    <small>Pembayaran mobile wallet</small>
+                  </span>
+                </label>
+                <label class="payment-method">
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="qris"
+                    data-required
+                  />
+                  <span class="payment-method__body">
+                    <strong>QRIS Wisata</strong>
+                    <small>Semua e-wallet dan m-banking</small>
+                  </span>
+                </label>
+              </div>
+              <span class="field-error" data-error-for="paymentMethod"></span>
+
+              <div class="payment-instruction-card">
+                <div class="payment-instruction-card__head">
+                  <div>
+                    <strong data-payment-method-title>Transfer BCA</strong>
+                    <p data-payment-method-caption>
+                      Verifikasi otomatis 5 menit
+                    </p>
+                  </div>
+                  <span class="bank-pill" data-payment-method-badge
+                    >Rekomendasi</span
+                  >
+                </div>
+                <div class="payment-channel">
+                  <span>Tujuan Pembayaran</span>
+                  <strong data-payment-target
+                    >7290 881 552 a.n. WAKANDA Kapalo Banda</strong
+                  >
+                </div>
+                <p class="helper-text" data-payment-instruction>
+                  Lakukan pembayaran ke rekening tujuan, lalu masukkan nomor
+                  referensi atau 4 digit terakhir transaksi pada form di bawah.
+                </p>
+              </div>
+
+              <div class="form-grid two-col">
+                <div class="field">
+                  <label for="paymentName">Nama Pembayar</label>
+                  <input
+                    id="paymentName"
+                    name="paymentName"
+                    type="text"
+                    placeholder="Nama sesuai rekening / akun"
+                    data-required
+                  />
+                  <span class="field-error" data-error-for="paymentName"></span>
+                </div>
+                <div class="field">
+                  <label for="paymentContact">Email Pengiriman Bukti</label>
+                  <input
+                    id="paymentContact"
+                    name="paymentContact"
+                    type="email"
+                    placeholder="nama@email.com"
+                    data-required
+                  />
+                  <span
+                    class="field-error"
+                    data-error-for="paymentContact"
+                  ></span>
+                </div>
+              </div>
+
+              <div class="form-grid two-col">
+                <div class="field">
+                  <label for="paymentSource">Bank / E-Wallet Pengirim</label>
+                  <input
+                    id="paymentSource"
+                    name="paymentSource"
+                    type="text"
+                    placeholder="Contoh: BCA Mobile / DANA"
+                    data-required
+                  />
+                  <span
+                    class="field-error"
+                    data-error-for="paymentSource"
+                  ></span>
+                </div>
+              </div>
+
+              <div class="checkbox-row checkbox-row--stack">
+                <input
+                  id="paymentConfirm"
+                  name="paymentConfirm"
+                  type="checkbox"
+                  data-required
+                />
+                <label for="paymentConfirm">
+                  Saya memastikan nominal pembayaran sudah sesuai dengan total
+                  tagihan reservasi.
+                </label>
+              </div>
+              <span class="field-error" data-error-for="paymentConfirm"></span>
+
+              <div class="button-row payment-actions">
+                <a class="btn btn-outline-dark" href="reservasi.html"
+                  >Kembali Edit Data</a
+                >
+                <button class="btn btn-primary" type="submit">
+                  Bayar dan Terbitkan Bukti
+                </button>
+              </div>
+              <p class="status-message" data-form-status></p>
+            </form>
+          </div>
+
+          <aside class="content-card booking-summary-card">
+            <div class="booking-summary-card__head">
+              <span class="eyebrow">Ringkasan Pesanan</span>
+              <h2>Reservasi Anda</h2>
+            </div>
+
+            <div class="summary-list">
+              <div class="summary-row">
+                <span>Kode Booking</span>
+                <strong data-summary-booking-code>-</strong>
+              </div>
+              <div class="summary-row">
+                <span>Pemesan</span>
+                <strong data-summary-name>-</strong>
+              </div>
+              <div class="summary-row">
+                <span>Paket</span>
+                <strong data-summary-package>-</strong>
+              </div>
+              <div class="summary-row">
+                <span>Tanggal Kunjungan</span>
+                <strong data-summary-date>-</strong>
+              </div>
+              <div class="summary-row">
+                <span>Sesi</span>
+                <strong data-summary-session>-</strong>
+              </div>
+              <div class="summary-row">
+                <span>Peserta</span>
+                <strong data-summary-visitors>-</strong>
+              </div>
+            </div>
+
+            <div class="summary-divider"></div>
+
+            <div class="summary-list summary-list--compact">
+              <div class="summary-row">
+                <span data-price-label>Subtotal Paket</span>
+                <strong data-summary-subtotal>-</strong>
+              </div>
+              <div class="summary-row">
+                <span>Biaya Layanan</span>
+                <strong data-summary-service>-</strong>
+              </div>
+              <div class="summary-row">
+                <span>Konservasi Area</span>
+                <strong data-summary-conservation>-</strong>
+              </div>
+              <div class="summary-row">
+                <span>Biaya Metode Bayar</span>
+                <strong data-summary-admin>-</strong>
+              </div>
+            </div>
+
+            <div class="summary-total">
+              <span>Total Pembayaran</span>
+              <strong data-summary-total>-</strong>
+            </div>
+
+            <div class="booking-note">
+              <strong>Catatan Reservasi</strong>
+              <p data-summary-note>Tidak ada catatan tambahan.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="site-shell reveal" data-payment-empty hidden>
+        <div class="content-card empty-state-card">
+          <span class="eyebrow">Reservasi Belum Ada</span>
+          <h2 class="section-title reservation-panel-title">
+            Isi Form Reservasi Terlebih Dahulu
+          </h2>
+          <p class="section-subtitle">
+            Halaman pembayaran membutuhkan data kunjungan agar ringkasan biaya
+            dan bukti pembayaran bisa diterbitkan dengan benar.
+          </p>
+          <div class="button-row">
+            <a class="btn btn-primary" href="reservasi.html"
+              >Ke Form Reservasi</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <h2>Wakanda - Kapalo Banda</h2>
+        </div>
+
+        <nav class="footer-nav" aria-label="Tautan kaki halaman">
+          <div class="footer-links">
+            <a href="index.html">Beranda</a>
+            <a href="informasi.html">Informasi</a>
+            <a href="galeri.html">Galeri</a>
+            <a href="faq.html">FAQ</a>
+            <a href="kontak.html">Kontak</a>
+          </div>
+        </nav>
+
+        <div class="footer-meta">
+          <p class="footer-copyright">
+            &copy; 2026 Wakanda - Kapalo Banda. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
