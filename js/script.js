@@ -10,6 +10,7 @@ const onReady = () => {
   setupSlider();
   setupReservationPaymentFlow();
   setupForms();
+  setupKontakForm();
 };
 
 function setupReservationPaymentFlow() {
@@ -155,6 +156,19 @@ function setupPaymentSubmit(formEl) {
 
     // Pastikan paymentMethod tersimpan (radio sudah mengisi value)
     if (!payment.paymentMethod) payment.paymentMethod = null;
+
+    // Simpan untuk hitung admin fee (computePricing baca wakandaLastPaymentMethod)
+    // Agar total mengikuti metode yang dipilih user.
+    try {
+      if (payment.paymentMethod) {
+        localStorage.setItem(
+          "wakandaLastPaymentMethod",
+          JSON.stringify(payment.paymentMethod),
+        );
+      }
+    } catch (err) {
+      // ignore
+    }
 
     // Map email pengiriman bukti menjadi reference demo
     if (!payment.paymentReference && payment.paymentContact) {
@@ -326,7 +340,10 @@ function readFormValues(formEl) {
 function computePricing(reservation) {
   // Demo pricing (deterministic) untuk tampilan profesional.
   const visitors = Math.max(1, Number(reservation.jumlah || 1));
-  const paket = reservation.paket || "Ticket";
+  // Normalisasi paket agar konsisten dengan value form
+  // (contoh: di reservasi.html ada value "Ticket" untuk item "Baju Adat" sehingga perlu mapping khusus)
+  const paketRaw = reservation.paket || "Ticket";
+  const paket = paketRaw;
 
   const baseByPaket = {
     Ticket: 5000,
@@ -680,6 +697,9 @@ function setupForms() {
   const forms = document.querySelectorAll("[data-validate]");
 
   forms.forEach((form) => {
+    // Skip form kontak (kami handle khusus karena ada preview upload)
+    if (form.querySelector("[data-contact-submit]")) return;
+
     form.addEventListener("submit", (event) => {
       event.preventDefault();
 
@@ -722,6 +742,274 @@ function setupForms() {
     });
   });
 }
+
+function setupKontakForm() {
+  const form = document.querySelector(
+    "form[data-validate] [data-contact-submit]",
+  )
+    ? document
+        .querySelector("form[data-validate] [data-contact-submit]")
+        .closest("form")
+    : null;
+
+  if (!form) return;
+
+  const submitBtn = form.querySelector("[data-contact-submit]");
+  const statusEl = form.querySelector("[data-form-status]");
+
+  const fotoInput = form.querySelector("#kontak-foto");
+  const previewEl = form.querySelector("[data-photo-preview]");
+
+  const MAX_FILES = 5;
+  const MAX_EACH_MB = 4; // demo guard
+  const ALLOWED_TYPES = [
+    "image/jpeg",
+    "image/png",
+    "image/jpg",
+    "image/webp",
+    "image/gif",
+  ];
+
+  let uploadedPhotos = []; // {name, dataUrl}
+
+  const setStatus = (msg) => {
+    if (!statusEl) return;
+    statusEl.textContent = msg;
+  };
+
+  const setBtnLoading = (isLoading) => {
+    if (!submitBtn) return;
+    submitBtn.classList.toggle("is-loading", isLoading);
+    submitBtn.disabled = isLoading;
+  };
+
+  const setBtnSuccess = () => {
+    if (!submitBtn) return;
+    submitBtn.classList.add("is-success");
+    setTimeout(() => {
+      submitBtn.classList.remove("is-success");
+    }, 2500);
+  };
+
+  const clearPreview = () => {
+    if (previewEl) previewEl.innerHTML = "";
+    uploadedPhotos = [];
+  };
+
+  const renderPreview = () => {
+    if (!previewEl) return;
+
+    previewEl.innerHTML = "";
+
+    if (!uploadedPhotos.length) {
+      const empty = document.createElement("p");
+      empty.className = "helper-text";
+      empty.style.margin = "0";
+      empty.textContent = "Belum ada foto yang dipilih.";
+      previewEl.appendChild(empty);
+      return;
+    }
+
+    uploadedPhotos.forEach((p, idx) => {
+      const wrap = document.createElement("div");
+      wrap.className = "contact-upload__thumb";
+
+      const img = document.createElement("img");
+      img.src = p.dataUrl;
+      img.alt = `Foto aspirasi ${idx + 1}`;
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("aria-label", "Hapus foto");
+      btn.textContent = "×";
+      btn.addEventListener("click", () => {
+        uploadedPhotos.splice(idx, 1);
+        renderPreview();
+      });
+
+      wrap.appendChild(img);
+      wrap.appendChild(btn);
+      previewEl.appendChild(wrap);
+    });
+  };
+
+  // Dropzone (pakai wrapper .contact-upload)
+  const dropzone = form.querySelector(".contact-upload");
+  if (dropzone) {
+    ["dragenter", "dragover"].forEach((evtName) => {
+      dropzone.addEventListener(evtName, (e) => {
+        e.preventDefault();
+        dropzone.classList.add("is-dragover");
+      });
+    });
+
+    ["dragleave", "drop"].forEach((evtName) => {
+      dropzone.addEventListener(evtName, (e) => {
+        e.preventDefault();
+        dropzone.classList.remove("is-dragover");
+      });
+    });
+
+    dropzone.addEventListener("drop", (e) => {
+      const files = Array.from(e.dataTransfer?.files || []);
+      if (files.length) handleFiles(files);
+    });
+  }
+
+  const readFilesAsDataUrls = async (files) => {
+    const results = [];
+
+    for (const file of files) {
+      // guard size/type
+      const mb = file.size / (1024 * 1024);
+      const typeOk =
+        ALLOWED_TYPES.includes(file.type) || file.type.startsWith("image/");
+      if (!typeOk) throw new Error("Format foto tidak didukung.");
+      if (mb > MAX_EACH_MB)
+        throw new Error(
+          `Ukuran foto terlalu besar (maks ${MAX_EACH_MB}MB per foto).`,
+        );
+
+      const dataUrl = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result));
+        reader.onerror = () => reject(new Error("Gagal membaca file."));
+        reader.readAsDataURL(file);
+      });
+
+      results.push({ name: file.name, dataUrl });
+    }
+
+    return results;
+  };
+
+  const handleFiles = async (files) => {
+    clearPreview();
+    setStatus("");
+
+    const images = files.filter((f) => (f.type || "").startsWith("image/"));
+    if (!images.length) {
+      renderPreview();
+      return;
+    }
+
+    const sliced = images.slice(0, MAX_FILES);
+    if (images.length > MAX_FILES) {
+      setStatus(
+        `Maksimal ${MAX_FILES} foto. Foto yang diproses hanya ${MAX_FILES} pertama.`,
+      );
+    }
+
+    const data = await readFilesAsDataUrls(sliced);
+    uploadedPhotos = data;
+    renderPreview();
+  };
+
+  if (fotoInput) {
+    fotoInput.addEventListener("change", async () => {
+      try {
+        const files = Array.from(fotoInput.files || []);
+        if (files.length === 0) {
+          clearPreview();
+          renderPreview();
+          return;
+        }
+        await handleFiles(files);
+      } catch (err) {
+        clearPreview();
+        renderPreview();
+        setStatus(String(err?.message || err));
+      }
+    });
+  }
+
+  // init preview
+  renderPreview();
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    // clear error fields
+    const required = form.querySelectorAll("[data-required]");
+    required.forEach((field) => {
+      const errorNode = form.querySelector(`[data-error-for="${field.name}"]`);
+      if (errorNode) errorNode.textContent = "";
+    });
+
+    // validate
+    let isValid = true;
+
+    required.forEach((field) => {
+      const errorNode = form.querySelector(`[data-error-for="${field.name}"]`);
+      let message = "";
+      const value = (field.value || "").trim();
+
+      if (!value && field.tagName.toLowerCase() !== "select") {
+        message = "Kolom ini wajib diisi.";
+      }
+
+      if (field.type === "email") {
+        if (value && !/\S+@\S+\.\S+/.test(value)) {
+          message = "Masukkan alamat email yang valid.";
+        } else if (!value) {
+          message = "Kolom ini wajib diisi.";
+        }
+      }
+
+      if (field.tagName.toLowerCase() === "select") {
+        if (!value) message = "Kolom ini wajib diisi.";
+      }
+
+      if (
+        !value &&
+        field.tagName.toLowerCase() === "input" &&
+        field.type !== "email"
+      ) {
+        message = "Kolom ini wajib diisi.";
+      }
+
+      if (message) isValid = false;
+      if (errorNode) errorNode.textContent = message;
+    });
+
+    if (!isValid) return;
+
+    // optional photos (validate count only)
+    if (uploadedPhotos.length > MAX_FILES) {
+      setStatus(`Maksimal ${MAX_FILES} foto.`);
+      return;
+    }
+
+    setStatus("");
+    setBtnLoading(true);
+
+    // micro delay to show loading
+    await new Promise((r) => setTimeout(r, 650));
+
+    const data = readFormValues(form);
+
+    const payload = {
+      ...data,
+      kontak_foto_preview: uploadedPhotos.map((p) => p.dataUrl),
+      kontak_foto_count: uploadedPhotos.length,
+      submittedAt: new Date().toISOString(),
+    };
+
+    try {
+      localStorage.setItem("wakandaKontak", JSON.stringify(payload));
+    } catch (err) {
+      // ignore storage issues
+    }
+
+    setBtnLoading(false);
+    setBtnSuccess();
+    setStatus("Terkirim! Aspirasi Anda sudah disimpan untuk demo sidang.");
+
+    // Keep data (no reset) so user can see preview.
+  });
+}
+
+document.addEventListener("DOMContentLoaded", onReady);
 
 function setupNavbarAnimation() {
   const header = document.querySelector(".site-header");

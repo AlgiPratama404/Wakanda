@@ -21,6 +21,7 @@
         display: block;
       }
       .print-hidden {
+        /* default: visible di layar biasa */
         display: block;
       }
       @media print {
@@ -194,7 +195,7 @@
             <div class="destination-stack">
               <article class="destination-card">
                 <img
-                  src="assets/images/Air terjun sarasah.jpg"
+                  src="assets/images/air-terjun-sarasah.jpg"
                   alt="Air Terjun Serasah"
                 />
                 <div class="destination-card__content">
@@ -208,7 +209,7 @@
 
               <article class="destination-card">
                 <img
-                  src="assets/images/Hutan pinus.jpg"
+                  src="assets/images/hutan-pinus.jpg"
                   alt="Hutan Pinus Rimba"
                 />
                 <div class="destination-card__content">
@@ -402,26 +403,66 @@
     </main>
 
     <footer class="site-footer">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <h2>Wakanda - Kapalo Banda</h2>
-        </div>
-
-        <nav class="footer-nav" aria-label="Tautan kaki halaman">
-          <div class="footer-links">
-            <a href="index.html#beranda">Beranda</a>
-            <a href="informasi.html">Informasi</a>
-            <a href="galeri.html">Galeri</a>
-            <a href="faq.html">FAQ</a>
-            <a href="kontak.html">Kontak</a>
+      <div class="footer-shell">
+        <div class="footer-grid">
+          <!-- Brand -->
+          <div class="footer-col footer-brand-col">
+            <h2>WAKANDA</h2>
+            <p class="footer-brand-sub">Wisata Alam Kapalo Banda</p>
+            <p class="footer-tagline">
+              Destinasi ekowisata terbaik di Kapalo Banda, Harau — menyatu
+              dengan alam, budaya, dan ketenangan.
+            </p>
           </div>
-        </nav>
 
-        <div class="footer-meta">
-          <p class="footer-copyright">
-            &copy; 2026 Wakanda - Kapalo Banda. All rights reserved.
-          </p>
+          <!-- Navigasi -->
+          <div class="footer-col">
+            <h3>Navigasi</h3>
+            <nav aria-label="Tautan footer">
+              <ul class="footer-links">
+                <li><a href="index.html#beranda">Beranda</a></li>
+                <li><a href="informasi.html">Informasi</a></li>
+                <li><a href="aktivitas.html">Aktivitas</a></li>
+                <li><a href="galeri.html">Galeri</a></li>
+                <li><a href="reservasi.html">Reservasi</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="ulasan.html">Ulasan</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <!-- Kontak -->
+          <div class="footer-col">
+            <h3>Kontak</h3>
+            <ul class="footer-contact-list">
+              <li>
+                <span>📍</span
+                ><span
+                  >Nagari Taram, Kec. Harau, Kab. Lima Puluh Kota, Sumbar
+                  26271</span
+                >
+              </li>
+              <li><span>📧</span><span>halo@kapalo-banda.id</span></li>
+              <li><span>📞</span><span>+62 812-3456-7890</span></li>
+            </ul>
+          </div>
+
+          <!-- Sosial Media -->
+          <div class="footer-col">
+            <h3>Ikuti Kami</h3>
+            <div class="footer-social">
+              <a href="#" aria-label="Instagram">IG</a>
+              <a href="#" aria-label="WhatsApp">WA</a>
+              <a href="#" aria-label="YouTube">YT</a>
+              <a href="#" aria-label="Facebook">FB</a>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Wakanda - Kapalo Banda. All rights reserved.</p>
       </div>
     </footer>
   </body>

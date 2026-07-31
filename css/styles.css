@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Poppins";
-  src: url("../assets/fonts/Inter,Poppins/Poppins/Poppins-Regular.ttf")
+  src: url("../assets/fonts/Poppins-Regular.ttf")
     format("truetype");
   font-weight: 400;
   font-style: normal;
@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: "Poppins";
-  src: url("../assets/fonts/Inter,Poppins/Poppins/Poppins-SemiBold.ttf")
+  src: url("../assets/fonts/Poppins-SemiBold.ttf")
     format("truetype");
   font-weight: 600;
   font-style: normal;
@@ -17,7 +17,7 @@
 
 @font-face {
   font-family: "Poppins";
-  src: url("../assets/fonts/Inter,Poppins/Poppins/Poppins-Bold.ttf")
+  src: url("../assets/fonts/Poppins-Bold.ttf")
     format("truetype");
   font-weight: 700;
   font-style: normal;
@@ -25,7 +25,7 @@
 
 @font-face {
   font-family: "Inter";
-  src: url("../assets/fonts/Inter,Poppins/Inter/static/Inter_18pt-Regular.ttf")
+  src: url("../assets/fonts/Inter_18pt-Regular.ttf")
     format("truetype");
   font-weight: 400;
   font-style: normal;
@@ -33,7 +33,7 @@
 
 @font-face {
   font-family: "Inter";
-  src: url("../assets/fonts/Inter,Poppins/Inter/static/Inter_18pt-Medium.ttf")
+  src: url("../assets/fonts/Inter_18pt-Medium.ttf")
     format("truetype");
   font-weight: 500;
   font-style: normal;
@@ -41,7 +41,7 @@
 
 @font-face {
   font-family: "Inter";
-  src: url("../assets/fonts/Inter,Poppins/Inter/static/Inter_18pt-Bold.ttf")
+  src: url("../assets/fonts/Inter_18pt-Bold.ttf")
     format("truetype");
   font-weight: 700;
   font-style: normal;
@@ -1385,9 +1385,21 @@ body {
 }
 
 .field-error {
-  min-height: 18px;
+  display: block;
+  height: 18px; /* jaga tinggi tetap agar tidak loncat */
+  margin: 0;
+  padding: 0;
   color: #dc2626;
   font-size: 0.85rem;
+  line-height: 18px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Saat error dikosongkan oleh JS (textContent = ""), elemen jadi :empty */
+.field-error:empty {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .helper-text {
@@ -1637,88 +1649,197 @@ body {
   margin: 0;
 }
 
+/* ========================================================================== */
+/* Footer Responsif Full-Width                                               */
+/* ========================================================================== */
+
 .site-footer {
-  width: min(1380px, calc(100% - 40px));
-  margin: 90px auto 18px;
-  padding: 46px 20px 34px;
-  border-radius: 38px 38px 0 0;
   background: var(--primary);
   color: rgba(255, 255, 255, 0.78);
+  padding: 56px 0 0;
+  margin-top: 100px;
 }
 
-.footer-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 18px;
+.footer-shell {
+  width: min(1380px, calc(100% - 48px));
+  margin: 0 auto;
 }
 
-.footer-brand,
-.footer-meta {
-  text-align: center;
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
 }
 
-.footer-nav {
-  text-align: center;
-}
-
-.footer-links {
-  justify-content: center;
-}
-
-.footer-brand {
-  text-align: center;
-}
-
-.footer-brand h2 {
-  margin: 0;
+.footer-col h3 {
+  margin: 0 0 18px;
   color: #ffffff;
   font-family: "Poppins", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+/* Brand column */
+.footer-brand-col h2 {
+  margin: 0 0 4px;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.footer-brand-sub {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.92rem;
+  font-weight: 600;
 }
 
 .footer-tagline {
-  margin: 8px 0 0;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
-  max-width: 420px;
+  margin: 14px 0 0;
+  line-height: 1.7;
+  max-width: 320px;
+  font-size: 0.95rem;
 }
 
-.footer-nav {
-  text-align: center;
-}
-
-.site-footer a {
-  color: inherit;
-}
-
+/* Navigation column */
 .footer-links {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.95rem;
+  transition: color 220ms ease;
 }
 
 .footer-links a:hover {
   color: #ffffff;
 }
 
-.footer-meta {
+/* Contact column */
+.footer-contact-list {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.footer-contact-list li span:first-child {
+  flex-shrink: 0;
+  font-size: 1.05rem;
+}
+
+/* Social column */
+.footer-social {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footer-social a {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  transition:
+    background 220ms ease,
+    transform 220ms ease;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.footer-social a:hover {
+  background: var(--primary-bright);
+  color: var(--primary-strong);
+  transform: translateY(-3px);
+}
+
+/* Bottom bar */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 22px 0;
   text-align: center;
 }
 
-.footer-copyright {
+.footer-bottom p {
   margin: 0;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.55);
 }
 
+/* Tablet */
+@media (max-width: 1120px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
-  .footer-inner {
-    text-align: center;
+  .site-footer {
+    padding: 40px 0 0;
+    margin-top: 72px;
   }
 
-  .footer-brand,
-  .footer-meta {
-    text-align: center;
+  .footer-shell {
+    width: calc(100% - 28px);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-bottom: 28px;
+  }
+
+  .footer-tagline {
+    max-width: none;
+  }
+
+  .footer-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .footer-brand-col h2 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .site-footer {
+    margin-top: 56px;
+    padding: 32px 0 0;
+  }
+
+  .footer-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 16px;
+  }
+
+  .footer-grid {
+    gap: 24px;
   }
 }
 
@@ -1848,6 +1969,163 @@ body {
   margin-top: 16px;
   color: var(--primary);
   font-weight: 600;
+}
+
+/* ========================================================================== */
+/* Kontak: upload foto + interaksi tombol                                   */
+/* ========================================================================== */
+
+.contact-upload {
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 24px;
+  border: 1.5px dashed rgba(6, 78, 59, 0.22);
+  background: rgba(245, 250, 244, 0.92);
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    background var(--transition),
+    box-shadow var(--transition);
+}
+
+.contact-upload.is-dragover {
+  border-color: rgba(34, 197, 94, 0.65);
+  background: rgba(234, 245, 238, 0.98);
+  box-shadow: 0 22px 44px rgba(16, 24, 40, 0.08);
+  transform: translateY(-2px);
+}
+
+.contact-upload__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.contact-upload__title {
+  display: grid;
+  gap: 6px;
+}
+
+.contact-upload__title strong {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.05rem;
+}
+
+.contact-upload__title span {
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 0.92rem;
+}
+
+.contact-upload__actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.contact-upload__file {
+  width: 100%;
+  max-width: 260px;
+}
+
+.contact-upload input[type="file"] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 18px;
+  border: 1.5px solid rgba(6, 78, 59, 0.12);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.contact-upload__preview {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .contact-upload__preview {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-upload__preview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.contact-upload__thumb {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1.5px solid rgba(6, 78, 59, 0.12);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.contact-upload__thumb img {
+  width: 100%;
+  height: 92px;
+  object-fit: cover;
+  display: block;
+}
+
+.contact-upload__thumb button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(6, 78, 59, 0.92);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-size: 1.05rem;
+  line-height: 1;
+  transition:
+    transform var(--transition),
+    background var(--transition);
+}
+
+.contact-upload__thumb button:hover {
+  transform: translateY(-1px) scale(1.02);
+  background: rgba(4, 55, 40, 0.98);
+}
+
+.contact-form-actions {
+  margin-top: 16px;
+}
+
+.btn.is-loading {
+  pointer-events: none;
+  opacity: 0.98;
+}
+
+.btn.is-loading::after {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  border-top-color: rgba(255, 255, 255, 0.98);
+  display: inline-block;
+  margin-left: 10px;
+  animation: spin 0.85s linear infinite;
+}
+
+.btn.is-success {
+  background: rgba(34, 197, 94, 0.18) !important;
+  color: #0b5a31 !important;
+  box-shadow: none !important;
+}
+
+.btn.is-success::after {
+  content: "✔";
+  margin-left: 10px;
+  font-weight: 900;
 }
 
 .activity-page,
@@ -2961,8 +3239,19 @@ body {
   align-items: start;
 }
 
+/* Supaya heading + card kanan ikut “ritme” vertikal yang sama */
+.payment-card {
+  display: grid;
+  gap: 14px;
+}
+
+.booking-summary-card {
+  display: grid;
+  gap: 14px;
+}
+
 .payment-heading {
-  padding-bottom: 18px;
+  padding-bottom: 0;
 }
 
 .reservation-panel-title {
@@ -2973,12 +3262,13 @@ body {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
-  margin-bottom: 16px;
+  margin-bottom: 6px;
 }
 
 .payment-method {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
   cursor: pointer;
   border-radius: 22px;
   border: 1.5px solid rgba(6, 78, 59, 0.12);
@@ -2989,6 +3279,23 @@ body {
     transform var(--transition),
     border-color var(--transition),
     box-shadow var(--transition);
+}
+
+.payment-method__body {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+
+/* HTML: input disembunyikan, jadi style fokus di container label */
+.payment-method:has(input:focus-visible),
+.payment-method:has(input:focus) {
+  outline: none;
+}
+
+.payment-method:has(input:checked) {
+  border-color: rgba(34, 197, 94, 0.55);
+  background: rgba(34, 197, 94, 0.08);
 }
 
 .payment-method:hover {
@@ -3087,6 +3394,17 @@ body {
 
 .payment-actions {
   margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: center;
+}
+
+/* Pastikan tombol tetap rapi di layout payment */
+@media (max-width: 768px) {
+  .payment-actions {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Booking summary */
@@ -3310,14 +3628,30 @@ body {
     grid-template-columns: 1fr;
   }
 
+  /* Rapikan urutan kanan agar tidak “loncat” saat stack */
+  .booking-summary-card {
+    margin-top: 8px;
+  }
+
   .reservation-steps {
     gap: 10px;
   }
 }
 
 @media (max-width: 768px) {
+  .payment-layout {
+    gap: 18px;
+  }
+
   .payment-method-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Rapikan form 2 kolom supaya tetap sejajar di HP */
+  .form-grid.two-col {
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 
   .receipt-grid {

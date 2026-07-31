@@ -1,0 +1,27 @@
+# Arsip / paket sumber aset — jangan ikut ke repo hosting
+*.zip
+*.rar
+*.7z
+
+# File OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+._*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Log & sementara
+*.log
+tmp/
+temp/
+
+# Backup hasil edit
+*.bak
+*.orig
+*.original.*

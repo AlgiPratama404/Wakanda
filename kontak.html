@@ -175,6 +175,7 @@
                   <option>Aspirasi / Saran</option>
                   <option>Pertanyaan Umum</option>
                   <option>Kolaborasi</option>
+                  <option>Dokumentasi</option>
                   <option>Pengaduan Layanan</option>
                 </select>
                 <span class="field-error" data-error-for="kategori"></span>
@@ -191,8 +192,48 @@
                 <span class="field-error" data-error-for="pesan"></span>
               </div>
 
-              <div class="button-row">
-                <button class="btn btn-primary" type="submit">
+              <div class="contact-upload reveal reveal--up" data-reveal>
+                <div class="contact-upload__top">
+                  <div class="contact-upload__title">
+                    <strong>Upload Foto (Opsional)</strong>
+                    <span>
+                      Bisa kirim bukti/pendukung aspirasi Anda dan bisa juga
+                      menggunakan foto maupun video.
+                      <br />Maksimal <b>5 foto</b>.
+                    </span>
+                  </div>
+
+                  <div class="contact-upload__actions">
+                    <div class="contact-upload__file">
+                      <input
+                        id="kontak-foto"
+                        type="file"
+                        name="kontak_foto"
+                        accept="image/*"
+                        multiple
+                        aria-label="Upload foto aspirasi"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="contact-upload__preview"
+                  data-photo-preview
+                  aria-live="polite"
+                ></div>
+
+                <p class="helper-text" style="margin: 12px 0 0">
+                  Tip: gunakan format JPG/PNG. untuk foto foto terbaik kamu.
+                </p>
+              </div>
+
+              <div class="contact-form-actions button-row">
+                <button
+                  class="btn btn-primary"
+                  type="submit"
+                  data-contact-submit
+                >
                   Kirim Aspirasi
                 </button>
               </div>
@@ -237,27 +278,66 @@
     </main>
 
     <footer class="site-footer">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <h2>Wakanda - Kapalo Banda</h2>
-
-        </div>
-
-        <nav class="footer-nav" aria-label="Tautan kaki halaman">
-          <div class="footer-links">
-            <a href="index.html">Beranda</a>
-            <a href="informasi.html">Informasi</a>
-            <a href="galeri.html">Galeri</a>
-            <a href="faq.html">FAQ</a>
-            <a href="kontak.html">Kontak</a>
+      <div class="footer-shell">
+        <div class="footer-grid">
+          <!-- Brand -->
+          <div class="footer-col footer-brand-col">
+            <h2>WAKANDA</h2>
+            <p class="footer-brand-sub">Wisata Alam Kapalo Banda</p>
+            <p class="footer-tagline">
+              Destinasi ekowisata terbaik di Kapalo Banda, Harau — menyatu
+              dengan alam, budaya, dan ketenangan.
+            </p>
           </div>
-        </nav>
 
-        <div class="footer-meta">
-          <p class="footer-copyright">
-            &copy; 2026 Wakanda - Kapalo Banda. All rights reserved.
-          </p>
+          <!-- Navigasi -->
+          <div class="footer-col">
+            <h3>Navigasi</h3>
+            <nav aria-label="Tautan footer">
+              <ul class="footer-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="informasi.html">Informasi</a></li>
+                <li><a href="aktivitas.html">Aktivitas</a></li>
+                <li><a href="galeri.html">Galeri</a></li>
+                <li><a href="reservasi.html">Reservasi</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="ulasan.html">Ulasan</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <!-- Kontak -->
+          <div class="footer-col">
+            <h3>Kontak</h3>
+            <ul class="footer-contact-list">
+              <li>
+                <span>📍</span
+                ><span
+                  >Nagari Taram, Kec. Harau, Kab. Lima Puluh Kota, Sumbar
+                  26271</span
+                >
+              </li>
+              <li><span>📧</span><span>halo@kapalo-banda.id</span></li>
+              <li><span>📞</span><span>+62 812-3456-7890</span></li>
+            </ul>
+          </div>
+
+          <!-- Sosial Media -->
+          <div class="footer-col">
+            <h3>Ikuti Kami</h3>
+            <div class="footer-social">
+              <a href="#" aria-label="Instagram">IG</a>
+              <a href="#" aria-label="WhatsApp">WA</a>
+              <a href="#" aria-label="YouTube">YT</a>
+              <a href="#" aria-label="Facebook">FB</a>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Wakanda - Kapalo Banda. All rights reserved.</p>
       </div>
     </footer>
   </body>
