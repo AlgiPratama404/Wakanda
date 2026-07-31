@@ -452,20 +452,40 @@ function setupMobileMenu() {
     return;
   }
 
-  const closeMenu = () => {
-    toggle.classList.remove("is-open");
-    toggle.setAttribute("aria-expanded", "false");
-    menu.classList.remove("is-open");
-  };
-
-  toggle.addEventListener("click", () => {
-    const isOpen = toggle.classList.toggle("is-open");
+  const setMenuState = (isOpen) => {
+    toggle.classList.toggle("is-open", isOpen);
     toggle.setAttribute("aria-expanded", String(isOpen));
     menu.classList.toggle("is-open", isOpen);
+    // Kunci scroll halaman selama menu mobile terbuka
+    document.body.classList.toggle("is-menu-open", isOpen);
+  };
+
+  const closeMenu = () => setMenuState(false);
+
+  toggle.addEventListener("click", (event) => {
+    event.stopPropagation();
+    setMenuState(!toggle.classList.contains("is-open"));
   });
 
   menu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", closeMenu);
+  });
+
+  // Sentuh di luar menu untuk menutup
+  document.addEventListener("click", (event) => {
+    if (!menu.classList.contains("is-open")) {
+      return;
+    }
+
+    if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+    }
   });
 
   window.addEventListener("resize", () => {

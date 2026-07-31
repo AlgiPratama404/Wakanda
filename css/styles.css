@@ -99,6 +99,10 @@ body.is-modal-open {
   overflow: hidden;
 }
 
+body.is-menu-open {
+  overflow: hidden;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -1614,9 +1618,11 @@ body {
   color: #ffffff;
 }
 
-.slider-dot {
+.slider-controls .slider-dot {
+  position: relative;
   width: 10px;
   height: 10px;
+  padding: 0;
   border-radius: 50%;
   background: rgba(6, 78, 59, 0.24);
   transition:
@@ -1624,7 +1630,18 @@ body {
     background var(--transition);
 }
 
-.slider-dot.is-active {
+/* Area sentuh dot diperbesar tanpa mengubah tampilannya */
+.slider-controls .slider-dot::after {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+  content: "";
+}
+
+.slider-controls .slider-dot.is-active {
   transform: scale(1.2);
   background: var(--primary);
 }
@@ -2860,6 +2877,12 @@ body {
     margin-top: -140px;
   }
 
+  /* Layout sudah 1 kolom: hanya kartu pertama yang boleh naik ke atas hero,
+     sisanya kembali normal supaya tidak saling menimpa. */
+  .glass-card ~ .glass-card {
+    margin-top: 0;
+  }
+
   .hero-card {
     min-height: 620px;
   }
@@ -3163,6 +3186,13 @@ body {
 .payment-card,
 .receipt-card {
   padding: 30px;
+}
+
+/* Kartu empty-state (pembayaran & bukti) butuh padding sendiri */
+.empty-state-card {
+  margin-top: 28px;
+  padding: 34px 30px;
+  background: #ffffff;
 }
 
 .booking-summary-card {
@@ -3669,5 +3699,329 @@ body {
 
   .reservation-steps {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================================================== */
+/* Penyempurnaan tampilan mobile (Android / iOS)                             */
+/* ========================================================================== */
+
+html {
+  /* Cegah Chrome Android membesarkan font sendiri saat orientasi berubah */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  /* Hilangkan kotak biru saat elemen disentuh */
+  -webkit-tap-highlight-color: rgba(6, 78, 59, 0.12);
+}
+
+@media (max-width: 768px) {
+  /* Kata panjang tidak boleh mendorong layout melebar di layar sempit.
+     Sengaja hanya di mobile: di desktop judul galeri memang dibiarkan
+     meluber keluar kolom sebagai gaya editorial. */
+  .section-title,
+  .activity-hero-title,
+  .activity-catalog__title,
+  h1,
+  h2,
+  h3 {
+    overflow-wrap: break-word;
+  }
+
+  /* --- Galeri: judul raksasa memicu scroll horizontal di HP --- */
+  .gallery-copy-block .section-title {
+    font-size: clamp(2.4rem, 9vw, 3.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    margin-bottom: 16px;
+  }
+
+  .gallery-copy-block,
+  .gallery-copy-block .section-subtitle {
+    max-width: none;
+  }
+
+  .gallery-archive-copy .section-title {
+    font-size: clamp(2.2rem, 8vw, 3rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+  }
+
+  /* Grid galeri tidak boleh melebar mengikuti konten anaknya */
+  .gallery-intro,
+  .gallery-collage,
+  .gallery-card,
+  .destination-layout,
+  .split-hero,
+  .activity-hero-panel,
+  .info-detail-top,
+  .reservation-layout,
+  .contact-layout,
+  .payment-layout {
+    min-width: 0;
+  }
+
+  .gallery-intro > *,
+  .gallery-collage > *,
+  .destination-layout > *,
+  .split-hero > *,
+  .info-detail-top > * {
+    min-width: 0;
+  }
+
+  /* --- Jarak vertikal lebih proporsional di layar kecil --- */
+  main {
+    padding-bottom: 72px;
+  }
+
+  .section-space {
+    margin-top: 56px;
+  }
+
+  :root {
+    --radius-xl: 26px;
+    --radius-lg: 22px;
+  }
+
+  /* --- Target sentuh minimal 44px --- */
+  .nav-link {
+    display: block;
+    padding: 13px 12px;
+    border-radius: 14px;
+  }
+
+  .nav-link:hover,
+  .nav-link.is-active {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Menu panjang tetap bisa digulir di layar pendek/landscape */
+  .nav-menu.is-open {
+    max-height: calc(100dvh - 140px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .chip,
+  .info-tab,
+  .gallery-filter-row .chip {
+    min-height: 44px;
+  }
+
+  .footer-links a,
+  .footer-col a {
+    display: inline-block;
+    padding-block: 6px;
+  }
+
+  /* --- Form: 16px mencegah browser mobile auto-zoom saat fokus --- */
+  .field input,
+  .field select,
+  .field textarea,
+  .contact-upload input[type="file"] {
+    font-size: 16px;
+    padding: 14px 16px;
+  }
+
+  .field textarea {
+    min-height: 132px;
+  }
+
+  /* Pesan error boleh turun ke baris berikutnya, jangan terpotong */
+  .field-error {
+    height: auto;
+    min-height: 18px;
+    white-space: normal;
+  }
+
+  /* --- Elemen tinggi tetap yang boros ruang di HP --- */
+  .hero-banner {
+    min-height: 400px;
+  }
+
+  .map-card,
+  .map-card iframe {
+    min-height: 300px;
+  }
+
+  .info-detail-media-frame img {
+    height: 300px;
+  }
+
+  .activity-hero-media,
+  .activity-hero-frame {
+    min-height: 250px;
+  }
+
+  .gallery-card--feature {
+    min-height: 340px;
+  }
+
+  .destination-card--tall {
+    min-height: 400px;
+  }
+
+  .info-testimonial-card .review-text {
+    min-height: 0;
+  }
+
+  /* --- Lightbox galeri: tampilkan foto utuh, bukan terpotong --- */
+  .gallery-modal {
+    padding: 14px;
+  }
+
+  .gallery-modal__content {
+    background: transparent;
+  }
+
+  .gallery-modal__content img {
+    max-height: 78vh;
+    object-fit: contain;
+    border-radius: 20px;
+    background: #0b1410;
+  }
+
+  /* --- Blok yang masih memakai baris horizontal --- */
+  .receipt-note-block,
+  .payment-instruction-card__head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .receipt-stamp {
+    width: 100%;
+  }
+
+  .split-copy {
+    gap: 14px;
+  }
+
+  .activity-hero-action .btn,
+  .activity-option-action .btn,
+  .activity-cta .btn-muted {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .dot-pattern {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .dot-pattern span {
+    width: 26px;
+    height: 64px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-shell {
+    min-height: 72px;
+    gap: 12px;
+  }
+
+  .nav-toggle {
+    width: 46px;
+    height: 46px;
+  }
+
+  .gallery-copy-block .section-title {
+    font-size: clamp(2.1rem, 10vw, 2.9rem);
+  }
+
+  .section-subtitle,
+  .info-lead {
+    font-size: 0.98rem;
+  }
+
+  .activity-card,
+  .review-card,
+  .review-tile,
+  .contact-card,
+  .meta-card,
+  .schedule-card,
+  .price-card,
+  .info-note-card,
+  .info-schedule-card,
+  .info-price-card,
+  .payment-card,
+  .receipt-card,
+  .booking-summary-card,
+  .empty-state-card {
+    padding: 22px 20px;
+  }
+
+  .contact-form-card,
+  .glass-card {
+    padding: 24px 18px;
+  }
+
+  .activity-panel {
+    padding: 22px 18px;
+  }
+
+  .icon-chip {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+    font-size: 1.45rem;
+  }
+
+  .activity-card h3,
+  .info-card h3,
+  .review-card h3,
+  .contact-card h3,
+  .meta-card h3,
+  .price-card h3,
+  .schedule-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .activity-body h3 {
+    font-size: 1.5rem;
+  }
+
+  .destination-card__content {
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .reservation-step {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .summary-row {
+    align-items: flex-start;
+  }
+
+  .info-tabs {
+    gap: 10px 12px;
+    margin-bottom: 26px;
+  }
+
+  .info-tab {
+    min-width: 0;
+    flex: 1 1 auto;
+    padding: 11px 16px;
+    font-size: 0.94rem;
+  }
+}
+
+/* HP dalam posisi landscape: hero jangan memakan seluruh layar */
+@media (max-width: 940px) and (orientation: landscape) and (max-height: 520px) {
+  .hero-card {
+    min-height: 380px;
+  }
+
+  .hero-banner {
+    min-height: 300px;
+  }
+
+  .nav-menu.is-open {
+    max-height: calc(100dvh - 110px);
   }
 }
