@@ -1,16 +1,28 @@
 const onReady = () => {
-  setupLoader();
-  setupMobileMenu();
-  setupActiveNav();
-  setupScrollReveal();
-  setupHashHighlight();
-  setupFaq();
-  setupGalleryFilter();
-  setupGalleryModal();
-  setupSlider();
-  setupReservationPaymentFlow();
-  setupForms();
-  setupKontakForm();
+  const steps = [
+    setupLoader,
+    setupMobileMenu,
+    setupActiveNav,
+    setupScrollReveal,
+    setupHashHighlight,
+    setupFaq,
+    setupGalleryFilter,
+    setupGalleryModal,
+    setupSlider,
+    setupReservationPaymentFlow,
+    setupForms,
+    setupKontakForm,
+  ];
+
+  steps.forEach((step) => {
+    try {
+      step();
+    } catch (err) {
+      // Satu bagian gagal tidak boleh menghentikan bagian lain (mis. reveal
+      // animasi) agar konten tetap tampil meski salah satu fitur error.
+      console.error(`[WAKANDA] ${step.name} gagal dijalankan:`, err);
+    }
+  });
 };
 
 function setupReservationPaymentFlow() {
@@ -519,6 +531,16 @@ function setupScrollReveal() {
     return;
   }
 
+  const revealAll = () => {
+    elements.forEach((el) => el.classList.add("is-visible"));
+  };
+
+  // Browser lama/WebView tanpa dukungan IntersectionObserver: tampilkan langsung.
+  if (!("IntersectionObserver" in window)) {
+    revealAll();
+    return;
+  }
+
   // Stagger: delay naik per urutan elemen di DOM
   const baseDelayMs = 80;
   elements.forEach((el, idx) => {
@@ -542,6 +564,14 @@ function setupScrollReveal() {
   );
 
   elements.forEach((element) => observer.observe(element));
+
+  // Jaring pengaman: kalau karena sebab apa pun observer tidak menandai
+  // elemen sebagai terlihat (mis. layout tinggi tak terduga di HP), paksa
+  // tampil setelah beberapa saat agar konten tidak pernah tersembunyi permanen.
+  window.setTimeout(() => {
+    revealAll();
+    observer.disconnect();
+  }, 2500);
 }
 
 function setupHashHighlight() {
